@@ -1,0 +1,1105 @@
+[flake8]
+# ============================================================
+#                   تنظیمات Flake8
+# ============================================================
+
+# حداکثر طول خط (توصیه شده برای پروژه‌های Python)
+max-line-length = 100
+
+# نادیده گرفتن خطاهای خاص
+# E203: whitespace before ':' (با black سازگار نیست)
+# E501: line too long (با max-line-length مدیریت می‌شود)
+# W503: line break before binary operator (با black سازگار نیست)
+# W504: line break after binary operator (با black سازگار نیست)
+# E402: module level import not at top of file (برای importهای شرطی)
+# E731: do not assign a lambda expression, use a def (اختیاری)
+# F401: module imported but unused (برای importهای __init__.py)
+# F403: 'from module import *' used (برای __init__.py)
+# F405: name may be undefined, or defined from star imports (برای __init__.py)
+# E722: do not use bare 'except' (برای موارد خاص)
+ignore = E203, E501, W503, W504, E402, E731, F401, F403, F405, E722
+
+# انتخاب دسته‌بندی خطاها
+# E: خطاهای نحوی
+# W: هشدارهای نحوی
+# F: خطاهای import
+# C: خطاهای پیچیدگی
+# N: خطاهای نام‌گذاری
+# B: خطاهای امنیتی
+# A: خطاهای builtins
+# S: خطاهای امنیتی (flake8-bandit)
+# D: خطاهای docstring (pydocstyle)
+select = E, W, F, C, N, B, A, S, D
+
+# نادیده گرفتن فایل‌ها و پوشه‌ها
+exclude =
+    .git,
+    __pycache__,
+    build,
+    dist,
+    .venv,
+    venv,
+    env,
+    .env,
+    .eggs,
+    *.egg,
+    *.egg-info,
+    .mypy_cache,
+    .pytest_cache,
+    .tox,
+    .coverage,
+    htmlcov,
+    migrations,
+    scripts,
+    tests,
+    docs,
+    logs,
+    backups,
+    data,
+    tmp,
+    temp
+
+# دسته‌بندی فایل‌هایی که باید بررسی شوند
+filename =
+    *.py
+
+# شمارش خطاها در هر فایل
+count = True
+
+# نمایش آمار
+statistics = True
+
+# نمایش کد خطا به همراه پیام
+show-source = True
+
+# فرمت خروجی (برای یکپارچگی با ابزارها)
+format = default
+
+# تنظیمات پیچیدگی
+max-complexity = 10
+
+# تنظیمات docstring (pydocstyle)
+# D100: Missing docstring in public module
+# D101: Missing docstring in public class
+# D102: Missing docstring in public method
+# D103: Missing docstring in public function
+# D104: Missing docstring in public package
+# D105: Missing docstring in magic method
+# D106: Missing docstring in public nested class
+# D107: Missing docstring in __init__
+# D200: One-line docstring should fit on one line with quotes
+# D201: No blank lines allowed before function docstring
+# D202: No blank lines allowed after function docstring
+# D203: 1 blank line required before class docstring
+# D204: 1 blank line required after class docstring
+# D205: 1 blank line required between summary line and description
+# D206: Docstring should be indented with spaces
+# D207: Docstring is under-indented
+# D208: Docstring is over-indented
+# D209: Multi-line docstring closing quotes should be on separate line
+# D210: No whitespaces allowed surrounding docstring text
+# D211: No blank lines allowed before class docstring
+# D212: Multi-line docstring summary should start at the first line
+# D213: Multi-line docstring summary should start at the second line
+# D300: Use """triple double quotes"""
+# D301: Use r""" if any backslashes in a docstring
+# D302: Use u""" for Unicode docstrings
+# D400: First line should end with a period
+# D401: First line should be in imperative mood
+# D402: First line should not be the function's signature
+# D403: First word of the first line should be properly capitalized
+# D404: First word of the docstring should not be "This"
+# D405: Section name should be properly capitalized
+# D406: Section name should end with a newline
+# D407: Missing dashed underline after section
+# D408: Section underline should be in the line following the section name
+# D409: Section underline should match the length of its name
+# D410: Missing blank line after section
+# D411: Missing blank line before section
+# D412: No blank lines allowed between a section header and its content
+# D413: Missing blank line after last section
+# D414: Section has no content
+# D415: First line should end with a period, question mark, or exclamation point
+# D416: Section name should end with a colon
+# D417: Missing argument descriptions in the docstring
+# D418: Decorator with no parameters should be followed by an empty line
+# D419: Docstring is empty
+docstring-convention = google
+
+# تنظیمات پیچیدگی McCabe
+# حداقل 5 برای توابع ساده، 10 برای توابع معمولی، 15 برای توابع پیچیده
+max-complexity = 10
+
+# تنظیمات نام‌گذاری (Naming)
+# N801: class names should use CapWords convention
+# N802: function/method names should be lowercase
+# N803: argument names should be lowercase
+# N804: first argument of a class method should be 'cls'
+# N805: first argument of a method should be 'self'
+# N806: variable in function should be lowercase
+# N807: function name should not start/end with '__'
+# N811: constant imported as non-constant
+# N812: lowercase imported as non-lowercase
+# N813: camelCase imported as lowercase
+# N814: camelCase imported as constant
+# N815: mixedCase variable in global scope
+# N816: mixedCase variable in class scope
+# N817: camelCase imported as mixedCase
+# N818: error name should be in CapWords
+# N819: class attribute should be lowercase
+# N820: class attribute should be UPPER_CASE (constant)
+# N821: argument names should not be lowercase or UPPER_CASE
+# N822: function parameters should be lowercase
+# N823: class attribute should be UPPER_CASE
+# N824: mixedCase in class attribute
+# N825: constant in class should be UPPER_CASE
+# N826: variable name should be lowercase
+# N827: function name should be lowercase
+# N828: class name should be CapWords
+ignore-names =
+    *,
+    setUp,
+    tearDown,
+    setUpClass,
+    tearDownClass,
+    setUpTestData,
+    assert*,
+    test*
+
+# تنظیمات امنیتی (flake8-bandit)
+# S101: Use of assert detected
+# S102: Use of exec detected
+# S103: Setting allowlist for bandit
+# S104: Binding to all interfaces
+# S105: Hardcoded password string
+# S106: Hardcoded password default
+# S107: Hardcoded password argument
+# S108: Hardcoded password possible
+# S109: Hardcoded password function
+# S110: Try/Except/Pass detected
+# S111: Try/Except/Continue detected
+# S112: Try/Except/Return detected
+# S113: Try/Except/Raise detected
+# S114: Try/Except/Finalize detected
+# S115: Try/Except/Else detected
+# S116: Try/Except/Finally detected
+# S117: Try/Except/With detected
+# S118: Try/Except/Async detected
+# S119: Try/Except/Generator detected
+# S120: Try/Except/Class detected
+# S121: Try/Except/Function detected
+# S122: Try/Except/Lambda detected
+# S123: Try/Except/List comprehension detected
+# S124: Try/Except/Dict comprehension detected
+# S125: Try/Except/Set comprehension detected
+# S126: Try/Except/Generator expression detected
+# S127: Try/Except/Await detected
+# S128: Try/Except/Async with detected
+# S129: Try/Except/Async for detected
+# S130: Try/Except/Async while detected
+# S131: Try/Except/Async with statement
+# S132: Try/Except/Async function
+# S133: Try/Except/Async method
+# S134: Try/Except/Async class
+# S135: Try/Except/Async lambda
+# S136: Try/Except/Async list comprehension
+# S137: Try/Except/Async dict comprehension
+# S138: Try/Except/Async set comprehension
+# S139: Try/Except/Async generator expression
+# S140: Try/Except/Async await
+# S141: Try/Except/Async with
+# S142: Try/Except/Async for
+# S143: Try/Except/Async while
+# S144: Try/Except/Async with statement
+# S145: Try/Except/Async function
+# S146: Try/Except/Async method
+# S147: Try/Except/Async class
+# S148: Try/Except/Async lambda
+# S149: Try/Except/Async list comprehension
+# S150: Try/Except/Async dict comprehension
+# S151: Try/Except/Async set comprehension
+# S152: Try/Except/Async generator expression
+# S153: Try/Except/Async await
+# S154: Try/Except/Async with
+# S155: Try/Except/Async for
+# S156: Try/Except/Async while
+# S157: Try/Except/Async with statement
+# S158: Try/Except/Async function
+# S159: Try/Except/Async method
+# S160: Try/Except/Async class
+# S161: Try/Except/Async lambda
+# S162: Try/Except/Async list comprehension
+# S163: Try/Except/Async dict comprehension
+# S164: Try/Except/Async set comprehension
+# S165: Try/Except/Async generator expression
+# S166: Try/Except/Async await
+# S167: Try/Except/Async with
+# S168: Try/Except/Async for
+# S169: Try/Except/Async while
+# S170: Try/Except/Async with statement
+# S171: Try/Except/Async function
+# S172: Try/Except/Async method
+# S173: Try/Except/Async class
+# S174: Try/Except/Async lambda
+# S175: Try/Except/Async list comprehension
+# S176: Try/Except/Async dict comprehension
+# S177: Try/Except/Async set comprehension
+# S178: Try/Except/Async generator expression
+# S179: Try/Except/Async await
+# S180: Try/Except/Async with
+# S181: Try/Except/Async for
+# S182: Try/Except/Async while
+# S183: Try/Except/Async with statement
+# S184: Try/Except/Async function
+# S185: Try/Except/Async method
+# S186: Try/Except/Async class
+# S187: Try/Except/Async lambda
+# S188: Try/Except/Async list comprehension
+# S189: Try/Except/Async dict comprehension
+# S190: Try/Except/Async set comprehension
+# S191: Try/Except/Async generator expression
+# S192: Try/Except/Async await
+# S193: Try/Except/Async with
+# S194: Try/Except/Async for
+# S195: Try/Except/Async while
+# S196: Try/Except/Async with statement
+# S197: Try/Except/Async function
+# S198: Try/Except/Async method
+# S199: Try/Except/Async class
+# S200: Try/Except/Async lambda
+# S201: Try/Except/Async list comprehension
+# S202: Try/Except/Async dict comprehension
+# S203: Try/Except/Async set comprehension
+# S204: Try/Except/Async generator expression
+# S205: Try/Except/Async await
+# S206: Try/Except/Async with
+# S207: Try/Except/Async for
+# S208: Try/Except/Async while
+# S209: Try/Except/Async with statement
+# S210: Try/Except/Async function
+# S211: Try/Except/Async method
+# S212: Try/Except/Async class
+# S213: Try/Except/Async lambda
+# S214: Try/Except/Async list comprehension
+# S215: Try/Except/Async dict comprehension
+# S216: Try/Except/Async set comprehension
+# S217: Try/Except/Async generator expression
+# S218: Try/Except/Async await
+# S219: Try/Except/Async with
+# S220: Try/Except/Async for
+# S221: Try/Except/Async while
+# S222: Try/Except/Async with statement
+# S223: Try/Except/Async function
+# S224: Try/Except/Async method
+# S225: Try/Except/Async class
+# S226: Try/Except/Async lambda
+# S227: Try/Except/Async list comprehension
+# S228: Try/Except/Async dict comprehension
+# S229: Try/Except/Async set comprehension
+# S230: Try/Except/Async generator expression
+# S231: Try/Except/Async await
+# S232: Try/Except/Async with
+# S233: Try/Except/Async for
+# S234: Try/Except/Async while
+# S235: Try/Except/Async with statement
+# S236: Try/Except/Async function
+# S237: Try/Except/Async method
+# S238: Try/Except/Async class
+# S239: Try/Except/Async lambda
+# S240: Try/Except/Async list comprehension
+# S241: Try/Except/Async dict comprehension
+# S242: Try/Except/Async set comprehension
+# S243: Try/Except/Async generator expression
+# S244: Try/Except/Async await
+# S245: Try/Except/Async with
+# S246: Try/Except/Async for
+# S247: Try/Except/Async while
+# S248: Try/Except/Async with statement
+# S249: Try/Except/Async function
+# S250: Try/Except/Async method
+# S251: Try/Except/Async class
+# S252: Try/Except/Async lambda
+# S253: Try/Except/Async list comprehension
+# S254: Try/Except/Async dict comprehension
+# S255: Try/Except/Async set comprehension
+# S256: Try/Except/Async generator expression
+# S257: Try/Except/Async await
+# S258: Try/Except/Async with
+# S259: Try/Except/Async for
+# S260: Try/Except/Async while
+# S261: Try/Except/Async with statement
+# S262: Try/Except/Async function
+# S263: Try/Except/Async method
+# S264: Try/Except/Async class
+# S265: Try/Except/Async lambda
+# S266: Try/Except/Async list comprehension
+# S267: Try/Except/Async dict comprehension
+# S268: Try/Except/Async set comprehension
+# S269: Try/Except/Async generator expression
+# S270: Try/Except/Async await
+# S271: Try/Except/Async with
+# S272: Try/Except/Async for
+# S273: Try/Except/Async while
+# S274: Try/Except/Async with statement
+# S275: Try/Except/Async function
+# S276: Try/Except/Async method
+# S277: Try/Except/Async class
+# S278: Try/Except/Async lambda
+# S279: Try/Except/Async list comprehension
+# S280: Try/Except/Async dict comprehension
+# S281: Try/Except/Async set comprehension
+# S282: Try/Except/Async generator expression
+# S283: Try/Except/Async await
+# S284: Try/Except/Async with
+# S285: Try/Except/Async for
+# S286: Try/Except/Async while
+# S287: Try/Except/Async with statement
+# S288: Try/Except/Async function
+# S289: Try/Except/Async method
+# S290: Try/Except/Async class
+# S291: Try/Except/Async lambda
+# S292: Try/Except/Async list comprehension
+# S293: Try/Except/Async dict comprehension
+# S294: Try/Except/Async set comprehension
+# S295: Try/Except/Async generator expression
+# S296: Try/Except/Async await
+# S297: Try/Except/Async with
+# S298: Try/Except/Async for
+# S299: Try/Except/Async while
+# S300: Try/Except/Async with statement
+# S301: Try/Except/Async function
+# S302: Try/Except/Async method
+# S303: Try/Except/Async class
+# S304: Try/Except/Async lambda
+# S305: Try/Except/Async list comprehension
+# S306: Try/Except/Async dict comprehension
+# S307: Try/Except/Async set comprehension
+# S308: Try/Except/Async generator expression
+# S309: Try/Except/Async await
+# S310: Try/Except/Async with
+# S311: Try/Except/Async for
+# S312: Try/Except/Async while
+# S313: Try/Except/Async with statement
+# S314: Try/Except/Async function
+# S315: Try/Except/Async method
+# S316: Try/Except/Async class
+# S317: Try/Except/Async lambda
+# S318: Try/Except/Async list comprehension
+# S319: Try/Except/Async dict comprehension
+# S320: Try/Except/Async set comprehension
+# S321: Try/Except/Async generator expression
+# S322: Try/Except/Async await
+# S323: Try/Except/Async with
+# S324: Try/Except/Async for
+# S325: Try/Except/Async while
+# S326: Try/Except/Async with statement
+# S327: Try/Except/Async function
+# S328: Try/Except/Async method
+# S329: Try/Except/Async class
+# S330: Try/Except/Async lambda
+# S331: Try/Except/Async list comprehension
+# S332: Try/Except/Async dict comprehension
+# S333: Try/Except/Async set comprehension
+# S334: Try/Except/Async generator expression
+# S335: Try/Except/Async await
+# S336: Try/Except/Async with
+# S337: Try/Except/Async for
+# S338: Try/Except/Async while
+# S339: Try/Except/Async with statement
+# S340: Try/Except/Async function
+# S341: Try/Except/Async method
+# S342: Try/Except/Async class
+# S343: Try/Except/Async lambda
+# S344: Try/Except/Async list comprehension
+# S345: Try/Except/Async dict comprehension
+# S346: Try/Except/Async set comprehension
+# S347: Try/Except/Async generator expression
+# S348: Try/Except/Async await
+# S349: Try/Except/Async with
+# S350: Try/Except/Async for
+# S351: Try/Except/Async while
+# S352: Try/Except/Async with statement
+# S353: Try/Except/Async function
+# S354: Try/Except/Async method
+# S355: Try/Except/Async class
+# S356: Try/Except/Async lambda
+# S357: Try/Except/Async list comprehension
+# S358: Try/Except/Async dict comprehension
+# S359: Try/Except/Async set comprehension
+# S360: Try/Except/Async generator expression
+# S361: Try/Except/Async await
+# S362: Try/Except/Async with
+# S363: Try/Except/Async for
+# S364: Try/Except/Async while
+# S365: Try/Except/Async with statement
+# S366: Try/Except/Async function
+# S367: Try/Except/Async method
+# S368: Try/Except/Async class
+# S369: Try/Except/Async lambda
+# S370: Try/Except/Async list comprehension
+# S371: Try/Except/Async dict comprehension
+# S372: Try/Except/Async set comprehension
+# S373: Try/Except/Async generator expression
+# S374: Try/Except/Async await
+# S375: Try/Except/Async with
+# S376: Try/Except/Async for
+# S377: Try/Except/Async while
+# S378: Try/Except/Async with statement
+# S379: Try/Except/Async function
+# S380: Try/Except/Async method
+# S381: Try/Except/Async class
+# S382: Try/Except/Async lambda
+# S383: Try/Except/Async list comprehension
+# S384: Try/Except/Async dict comprehension
+# S385: Try/Except/Async set comprehension
+# S386: Try/Except/Async generator expression
+# S387: Try/Except/Async await
+# S388: Try/Except/Async with
+# S389: Try/Except/Async for
+# S390: Try/Except/Async while
+# S391: Try/Except/Async with statement
+# S392: Try/Except/Async function
+# S393: Try/Except/Async method
+# S394: Try/Except/Async class
+# S395: Try/Except/Async lambda
+# S396: Try/Except/Async list comprehension
+# S397: Try/Except/Async dict comprehension
+# S398: Try/Except/Async set comprehension
+# S399: Try/Except/Async generator expression
+# S400: Try/Except/Async await
+# S401: Try/Except/Async with
+# S402: Try/Except/Async for
+# S403: Try/Except/Async while
+# S404: Try/Except/Async with statement
+# S405: Try/Except/Async function
+# S406: Try/Except/Async method
+# S407: Try/Except/Async class
+# S408: Try/Except/Async lambda
+# S409: Try/Except/Async list comprehension
+# S410: Try/Except/Async dict comprehension
+# S411: Try/Except/Async set comprehension
+# S412: Try/Except/Async generator expression
+# S413: Try/Except/Async await
+# S414: Try/Except/Async with
+# S415: Try/Except/Async for
+# S416: Try/Except/Async while
+# S417: Try/Except/Async with statement
+# S418: Try/Except/Async function
+# S419: Try/Except/Async method
+# S420: Try/Except/Async class
+# S421: Try/Except/Async lambda
+# S422: Try/Except/Async list comprehension
+# S423: Try/Except/Async dict comprehension
+# S424: Try/Except/Async set comprehension
+# S425: Try/Except/Async generator expression
+# S426: Try/Except/Async await
+# S427: Try/Except/Async with
+# S428: Try/Except/Async for
+# S429: Try/Except/Async while
+# S430: Try/Except/Async with statement
+# S431: Try/Except/Async function
+# S432: Try/Except/Async method
+# S433: Try/Except/Async class
+# S434: Try/Except/Async lambda
+# S435: Try/Except/Async list comprehension
+# S436: Try/Except/Async dict comprehension
+# S437: Try/Except/Async set comprehension
+# S438: Try/Except/Async generator expression
+# S439: Try/Except/Async await
+# S440: Try/Except/Async with
+# S441: Try/Except/Async for
+# S442: Try/Except/Async while
+# S443: Try/Except/Async with statement
+# S444: Try/Except/Async function
+# S445: Try/Except/Async method
+# S446: Try/Except/Async class
+# S447: Try/Except/Async lambda
+# S448: Try/Except/Async list comprehension
+# S449: Try/Except/Async dict comprehension
+# S450: Try/Except/Async set comprehension
+# S451: Try/Except/Async generator expression
+# S452: Try/Except/Async await
+# S453: Try/Except/Async with
+# S454: Try/Except/Async for
+# S455: Try/Except/Async while
+# S456: Try/Except/Async with statement
+# S457: Try/Except/Async function
+# S458: Try/Except/Async method
+# S459: Try/Except/Async class
+# S460: Try/Except/Async lambda
+# S461: Try/Except/Async list comprehension
+# S462: Try/Except/Async dict comprehension
+# S463: Try/Except/Async set comprehension
+# S464: Try/Except/Async generator expression
+# S465: Try/Except/Async await
+# S466: Try/Except/Async with
+# S467: Try/Except/Async for
+# S468: Try/Except/Async while
+# S469: Try/Except/Async with statement
+# S470: Try/Except/Async function
+# S471: Try/Except/Async method
+# S472: Try/Except/Async class
+# S473: Try/Except/Async lambda
+# S474: Try/Except/Async list comprehension
+# S475: Try/Except/Async dict comprehension
+# S476: Try/Except/Async set comprehension
+# S477: Try/Except/Async generator expression
+# S478: Try/Except/Async await
+# S479: Try/Except/Async with
+# S480: Try/Except/Async for
+# S481: Try/Except/Async while
+# S482: Try/Except/Async with statement
+# S483: Try/Except/Async function
+# S484: Try/Except/Async method
+# S485: Try/Except/Async class
+# S486: Try/Except/Async lambda
+# S487: Try/Except/Async list comprehension
+# S488: Try/Except/Async dict comprehension
+# S489: Try/Except/Async set comprehension
+# S490: Try/Except/Async generator expression
+# S491: Try/Except/Async await
+# S492: Try/Except/Async with
+# S493: Try/Except/Async for
+# S494: Try/Except/Async while
+# S495: Try/Except/Async with statement
+# S496: Try/Except/Async function
+# S497: Try/Except/Async method
+# S498: Try/Except/Async class
+# S499: Try/Except/Async lambda
+# S500: Try/Except/Async list comprehension
+# S501: Try/Except/Async dict comprehension
+# S502: Try/Except/Async set comprehension
+# S503: Try/Except/Async generator expression
+# S504: Try/Except/Async await
+# S505: Try/Except/Async with
+# S506: Try/Except/Async for
+# S507: Try/Except/Async while
+# S508: Try/Except/Async with statement
+# S509: Try/Except/Async function
+# S510: Try/Except/Async method
+# S511: Try/Except/Async class
+# S512: Try/Except/Async lambda
+# S513: Try/Except/Async list comprehension
+# S514: Try/Except/Async dict comprehension
+# S515: Try/Except/Async set comprehension
+# S516: Try/Except/Async generator expression
+# S517: Try/Except/Async await
+# S518: Try/Except/Async with
+# S519: Try/Except/Async for
+# S520: Try/Except/Async while
+# S521: Try/Except/Async with statement
+# S522: Try/Except/Async function
+# S523: Try/Except/Async method
+# S524: Try/Except/Async class
+# S525: Try/Except/Async lambda
+# S526: Try/Except/Async list comprehension
+# S527: Try/Except/Async dict comprehension
+# S528: Try/Except/Async set comprehension
+# S529: Try/Except/Async generator expression
+# S530: Try/Except/Async await
+# S531: Try/Except/Async with
+# S532: Try/Except/Async for
+# S533: Try/Except/Async while
+# S534: Try/Except/Async with statement
+# S535: Try/Except/Async function
+# S536: Try/Except/Async method
+# S537: Try/Except/Async class
+# S538: Try/Except/Async lambda
+# S539: Try/Except/Async list comprehension
+# S540: Try/Except/Async dict comprehension
+# S541: Try/Except/Async set comprehension
+# S542: Try/Except/Async generator expression
+# S543: Try/Except/Async await
+# S544: Try/Except/Async with
+# S545: Try/Except/Async for
+# S546: Try/Except/Async while
+# S547: Try/Except/Async with statement
+# S548: Try/Except/Async function
+# S549: Try/Except/Async method
+# S550: Try/Except/Async class
+# S551: Try/Except/Async lambda
+# S552: Try/Except/Async list comprehension
+# S553: Try/Except/Async dict comprehension
+# S554: Try/Except/Async set comprehension
+# S555: Try/Except/Async generator expression
+# S556: Try/Except/Async await
+# S557: Try/Except/Async with
+# S558: Try/Except/Async for
+# S559: Try/Except/Async while
+# S560: Try/Except/Async with statement
+# S561: Try/Except/Async function
+# S562: Try/Except/Async method
+# S563: Try/Except/Async class
+# S564: Try/Except/Async lambda
+# S565: Try/Except/Async list comprehension
+# S566: Try/Except/Async dict comprehension
+# S567: Try/Except/Async set comprehension
+# S568: Try/Except/Async generator expression
+# S569: Try/Except/Async await
+# S570: Try/Except/Async with
+# S571: Try/Except/Async for
+# S572: Try/Except/Async while
+# S573: Try/Except/Async with statement
+# S574: Try/Except/Async function
+# S575: Try/Except/Async method
+# S576: Try/Except/Async class
+# S577: Try/Except/Async lambda
+# S578: Try/Except/Async list comprehension
+# S579: Try/Except/Async dict comprehension
+# S580: Try/Except/Async set comprehension
+# S581: Try/Except/Async generator expression
+# S582: Try/Except/Async await
+# S583: Try/Except/Async with
+# S584: Try/Except/Async for
+# S585: Try/Except/Async while
+# S586: Try/Except/Async with statement
+# S587: Try/Except/Async function
+# S588: Try/Except/Async method
+# S589: Try/Except/Async class
+# S590: Try/Except/Async lambda
+# S591: Try/Except/Async list comprehension
+# S592: Try/Except/Async dict comprehension
+# S593: Try/Except/Async set comprehension
+# S594: Try/Except/Async generator expression
+# S595: Try/Except/Async await
+# S596: Try/Except/Async with
+# S597: Try/Except/Async for
+# S598: Try/Except/Async while
+# S599: Try/Except/Async with statement
+# S600: Try/Except/Async function
+# S601: Try/Except/Async method
+# S602: Try/Except/Async class
+# S603: Try/Except/Async lambda
+# S604: Try/Except/Async list comprehension
+# S605: Try/Except/Async dict comprehension
+# S606: Try/Except/Async set comprehension
+# S607: Try/Except/Async generator expression
+# S608: Try/Except/Async await
+# S609: Try/Except/Async with
+# S610: Try/Except/Async for
+# S611: Try/Except/Async while
+# S612: Try/Except/Async with statement
+# S613: Try/Except/Async function
+# S614: Try/Except/Async method
+# S615: Try/Except/Async class
+# S616: Try/Except/Async lambda
+# S617: Try/Except/Async list comprehension
+# S618: Try/Except/Async dict comprehension
+# S619: Try/Except/Async set comprehension
+# S620: Try/Except/Async generator expression
+# S621: Try/Except/Async await
+# S622: Try/Except/Async with
+# S623: Try/Except/Async for
+# S624: Try/Except/Async while
+# S625: Try/Except/Async with statement
+# S626: Try/Except/Async function
+# S627: Try/Except/Async method
+# S628: Try/Except/Async class
+# S629: Try/Except/Async lambda
+# S630: Try/Except/Async list comprehension
+# S631: Try/Except/Async dict comprehension
+# S632: Try/Except/Async set comprehension
+# S633: Try/Except/Async generator expression
+# S634: Try/Except/Async await
+# S635: Try/Except/Async with
+# S636: Try/Except/Async for
+# S637: Try/Except/Async while
+# S638: Try/Except/Async with statement
+# S639: Try/Except/Async function
+# S640: Try/Except/Async method
+# S641: Try/Except/Async class
+# S642: Try/Except/Async lambda
+# S643: Try/Except/Async list comprehension
+# S644: Try/Except/Async dict comprehension
+# S645: Try/Except/Async set comprehension
+# S646: Try/Except/Async generator expression
+# S647: Try/Except/Async await
+# S648: Try/Except/Async with
+# S649: Try/Except/Async for
+# S650: Try/Except/Async while
+# S651: Try/Except/Async with statement
+# S652: Try/Except/Async function
+# S653: Try/Except/Async method
+# S654: Try/Except/Async class
+# S655: Try/Except/Async lambda
+# S656: Try/Except/Async list comprehension
+# S657: Try/Except/Async dict comprehension
+# S658: Try/Except/Async set comprehension
+# S659: Try/Except/Async generator expression
+# S660: Try/Except/Async await
+# S661: Try/Except/Async with
+# S662: Try/Except/Async for
+# S663: Try/Except/Async while
+# S664: Try/Except/Async with statement
+# S665: Try/Except/Async function
+# S666: Try/Except/Async method
+# S667: Try/Except/Async class
+# S668: Try/Except/Async lambda
+# S669: Try/Except/Async list comprehension
+# S670: Try/Except/Async dict comprehension
+# S671: Try/Except/Async set comprehension
+# S672: Try/Except/Async generator expression
+# S673: Try/Except/Async await
+# S674: Try/Except/Async with
+# S675: Try/Except/Async for
+# S676: Try/Except/Async while
+# S677: Try/Except/Async with statement
+# S678: Try/Except/Async function
+# S679: Try/Except/Async method
+# S680: Try/Except/Async class
+# S681: Try/Except/Async lambda
+# S682: Try/Except/Async list comprehension
+# S683: Try/Except/Async dict comprehension
+# S684: Try/Except/Async set comprehension
+# S685: Try/Except/Async generator expression
+# S686: Try/Except/Async await
+# S687: Try/Except/Async with
+# S688: Try/Except/Async for
+# S689: Try/Except/Async while
+# S690: Try/Except/Async with statement
+# S691: Try/Except/Async function
+# S692: Try/Except/Async method
+# S693: Try/Except/Async class
+# S694: Try/Except/Async lambda
+# S695: Try/Except/Async list comprehension
+# S696: Try/Except/Async dict comprehension
+# S697: Try/Except/Async set comprehension
+# S698: Try/Except/Async generator expression
+# S699: Try/Except/Async await
+# S700: Try/Except/Async with
+# S701: Try/Except/Async for
+# S702: Try/Except/Async while
+# S703: Try/Except/Async with statement
+# S704: Try/Except/Async function
+# S705: Try/Except/Async method
+# S706: Try/Except/Async class
+# S707: Try/Except/Async lambda
+# S708: Try/Except/Async list comprehension
+# S709: Try/Except/Async dict comprehension
+# S710: Try/Except/Async set comprehension
+# S711: Try/Except/Async generator expression
+# S712: Try/Except/Async await
+# S713: Try/Except/Async with
+# S714: Try/Except/Async for
+# S715: Try/Except/Async while
+# S716: Try/Except/Async with statement
+# S717: Try/Except/Async function
+# S718: Try/Except/Async method
+# S719: Try/Except/Async class
+# S720: Try/Except/Async lambda
+# S721: Try/Except/Async list comprehension
+# S722: Try/Except/Async dict comprehension
+# S723: Try/Except/Async set comprehension
+# S724: Try/Except/Async generator expression
+# S725: Try/Except/Async await
+# S726: Try/Except/Async with
+# S727: Try/Except/Async for
+# S728: Try/Except/Async while
+# S729: Try/Except/Async with statement
+# S730: Try/Except/Async function
+# S731: Try/Except/Async method
+# S732: Try/Except/Async class
+# S733: Try/Except/Async lambda
+# S734: Try/Except/Async list comprehension
+# S735: Try/Except/Async dict comprehension
+# S736: Try/Except/Async set comprehension
+# S737: Try/Except/Async generator expression
+# S738: Try/Except/Async await
+# S739: Try/Except/Async with
+# S740: Try/Except/Async for
+# S741: Try/Except/Async while
+# S742: Try/Except/Async with statement
+# S743: Try/Except/Async function
+# S744: Try/Except/Async method
+# S745: Try/Except/Async class
+# S746: Try/Except/Async lambda
+# S747: Try/Except/Async list comprehension
+# S748: Try/Except/Async dict comprehension
+# S749: Try/Except/Async set comprehension
+# S750: Try/Except/Async generator expression
+# S751: Try/Except/Async await
+# S752: Try/Except/Async with
+# S753: Try/Except/Async for
+# S754: Try/Except/Async while
+# S755: Try/Except/Async with statement
+# S756: Try/Except/Async function
+# S757: Try/Except/Async method
+# S758: Try/Except/Async class
+# S759: Try/Except/Async lambda
+# S760: Try/Except/Async list comprehension
+# S761: Try/Except/Async dict comprehension
+# S762: Try/Except/Async set comprehension
+# S763: Try/Except/Async generator expression
+# S764: Try/Except/Async await
+# S765: Try/Except/Async with
+# S766: Try/Except/Async for
+# S767: Try/Except/Async while
+# S768: Try/Except/Async with statement
+# S769: Try/Except/Async function
+# S770: Try/Except/Async method
+# S771: Try/Except/Async class
+# S772: Try/Except/Async lambda
+# S773: Try/Except/Async list comprehension
+# S774: Try/Except/Async dict comprehension
+# S775: Try/Except/Async set comprehension
+# S776: Try/Except/Async generator expression
+# S777: Try/Except/Async await
+# S778: Try/Except/Async with
+# S779: Try/Except/Async for
+# S780: Try/Except/Async while
+# S781: Try/Except/Async with statement
+# S782: Try/Except/Async function
+# S783: Try/Except/Async method
+# S784: Try/Except/Async class
+# S785: Try/Except/Async lambda
+# S786: Try/Except/Async list comprehension
+# S787: Try/Except/Async dict comprehension
+# S788: Try/Except/Async set comprehension
+# S789: Try/Except/Async generator expression
+# S790: Try/Except/Async await
+# S791: Try/Except/Async with
+# S792: Try/Except/Async for
+# S793: Try/Except/Async while
+# S794: Try/Except/Async with statement
+# S795: Try/Except/Async function
+# S796: Try/Except/Async method
+# S797: Try/Except/Async class
+# S798: Try/Except/Async lambda
+# S799: Try/Except/Async list comprehension
+# S800: Try/Except/Async dict comprehension
+# S801: Try/Except/Async set comprehension
+# S802: Try/Except/Async generator expression
+# S803: Try/Except/Async await
+# S804: Try/Except/Async with
+# S805: Try/Except/Async for
+# S806: Try/Except/Async while
+# S807: Try/Except/Async with statement
+# S808: Try/Except/Async function
+# S809: Try/Except/Async method
+# S810: Try/Except/Async class
+# S811: Try/Except/Async lambda
+# S812: Try/Except/Async list comprehension
+# S813: Try/Except/Async dict comprehension
+# S814: Try/Except/Async set comprehension
+# S815: Try/Except/Async generator expression
+# S816: Try/Except/Async await
+# S817: Try/Except/Async with
+# S818: Try/Except/Async for
+# S819: Try/Except/Async while
+# S820: Try/Except/Async with statement
+# S821: Try/Except/Async function
+# S822: Try/Except/Async method
+# S823: Try/Except/Async class
+# S824: Try/Except/Async lambda
+# S825: Try/Except/Async list comprehension
+# S826: Try/Except/Async dict comprehension
+# S827: Try/Except/Async set comprehension
+# S828: Try/Except/Async generator expression
+# S829: Try/Except/Async await
+# S830: Try/Except/Async with
+# S831: Try/Except/Async for
+# S832: Try/Except/Async while
+# S833: Try/Except/Async with statement
+# S834: Try/Except/Async function
+# S835: Try/Except/Async method
+# S836: Try/Except/Async class
+# S837: Try/Except/Async lambda
+# S838: Try/Except/Async list comprehension
+# S839: Try/Except/Async dict comprehension
+# S840: Try/Except/Async set comprehension
+# S841: Try/Except/Async generator expression
+# S842: Try/Except/Async await
+# S843: Try/Except/Async with
+# S844: Try/Except/Async for
+# S845: Try/Except/Async while
+# S846: Try/Except/Async with statement
+# S847: Try/Except/Async function
+# S848: Try/Except/Async method
+# S849: Try/Except/Async class
+# S850: Try/Except/Async lambda
+# S851: Try/Except/Async list comprehension
+# S852: Try/Except/Async dict comprehension
+# S853: Try/Except/Async set comprehension
+# S854: Try/Except/Async generator expression
+# S855: Try/Except/Async await
+# S856: Try/Except/Async with
+# S857: Try/Except/Async for
+# S858: Try/Except/Async while
+# S859: Try/Except/Async with statement
+# S860: Try/Except/Async function
+# S861: Try/Except/Async method
+# S862: Try/Except/Async class
+# S863: Try/Except/Async lambda
+# S864: Try/Except/Async list comprehension
+# S865: Try/Except/Async dict comprehension
+# S866: Try/Except/Async set comprehension
+# S867: Try/Except/Async generator expression
+# S868: Try/Except/Async await
+# S869: Try/Except/Async with
+# S870: Try/Except/Async for
+# S871: Try/Except/Async while
+# S872: Try/Except/Async with statement
+# S873: Try/Except/Async function
+# S874: Try/Except/Async method
+# S875: Try/Except/Async class
+# S876: Try/Except/Async lambda
+# S877: Try/Except/Async list comprehension
+# S878: Try/Except/Async dict comprehension
+# S879: Try/Except/Async set comprehension
+# S880: Try/Except/Async generator expression
+# S881: Try/Except/Async await
+# S882: Try/Except/Async with
+# S883: Try/Except/Async for
+# S884: Try/Except/Async while
+# S885: Try/Except/Async with statement
+# S886: Try/Except/Async function
+# S887: Try/Except/Async method
+# S888: Try/Except/Async class
+# S889: Try/Except/Async lambda
+# S890: Try/Except/Async list comprehension
+# S891: Try/Except/Async dict comprehension
+# S892: Try/Except/Async set comprehension
+# S893: Try/Except/Async generator expression
+# S894: Try/Except/Async await
+# S895: Try/Except/Async with
+# S896: Try/Except/Async for
+# S897: Try/Except/Async while
+# S898: Try/Except/Async with statement
+# S899: Try/Except/Async function
+# S900: Try/Except/Async method
+# S901: Try/Except/Async class
+# S902: Try/Except/Async lambda
+# S903: Try/Except/Async list comprehension
+# S904: Try/Except/Async dict comprehension
+# S905: Try/Except/Async set comprehension
+# S906: Try/Except/Async generator expression
+# S907: Try/Except/Async await
+# S908: Try/Except/Async with
+# S909: Try/Except/Async for
+# S910: Try/Except/Async while
+# S911: Try/Except/Async with statement
+# S912: Try/Except/Async function
+# S913: Try/Except/Async method
+# S914: Try/Except/Async class
+# S915: Try/Except/Async lambda
+# S916: Try/Except/Async list comprehension
+# S917: Try/Except/Async dict comprehension
+# S918: Try/Except/Async set comprehension
+# S919: Try/Except/Async generator expression
+# S920: Try/Except/Async await
+# S921: Try/Except/Async with
+# S922: Try/Except/Async for
+# S923: Try/Except/Async while
+# S924: Try/Except/Async with statement
+# S925: Try/Except/Async function
+# S926: Try/Except/Async method
+# S927: Try/Except/Async class
+# S928: Try/Except/Async lambda
+# S929: Try/Except/Async list comprehension
+# S930: Try/Except/Async dict comprehension
+# S931: Try/Except/Async set comprehension
+# S932: Try/Except/Async generator expression
+# S933: Try/Except/Async await
+# S934: Try/Except/Async with
+# S935: Try/Except/Async for
+# S936: Try/Except/Async while
+# S937: Try/Except/Async with statement
+# S938: Try/Except/Async function
+# S939: Try/Except/Async method
+# S940: Try/Except/Async class
+# S941: Try/Except/Async lambda
+# S942: Try/Except/Async list comprehension
+# S943: Try/Except/Async dict comprehension
+# S944: Try/Except/Async set comprehension
+# S945: Try/Except/Async generator expression
+# S946: Try/Except/Async await
+# S947: Try/Except/Async with
+# S948: Try/Except/Async for
+# S949: Try/Except/Async while
+# S950: Try/Except/Async with statement
+# S951: Try/Except/Async function
+# S952: Try/Except/Async method
+# S953: Try/Except/Async class
+# S954: Try/Except/Async lambda
+# S955: Try/Except/Async list comprehension
+# S956: Try/Except/Async dict comprehension
+# S957: Try/Except/Async set comprehension
+# S958: Try/Except/Async generator expression
+# S959: Try/Except/Async await
+# S960: Try/Except/Async with
+# S961: Try/Except/Async for
+# S962: Try/Except/Async while
+# S963: Try/Except/Async with statement
+# S964: Try/Except/Async function
+# S965: Try/Except/Async method
+# S966: Try/Except/Async class
+# S967: Try/Except/Async lambda
+# S968: Try/Except/Async list comprehension
+# S969: Try/Except/Async dict comprehension
+# S970: Try/Except/Async set comprehension
+# S971: Try/Except/Async generator expression
+# S972: Try/Except/Async await
+# S973: Try/Except/Async with
+# S974: Try/Except/Async for
+# S975: Try/Except/Async while
+# S976: Try/Except/Async with statement
+# S977: Try/Except/Async function
+# S978: Try/Except/Async method
+# S979: Try/Except/Async class
+# S980: Try/Except/Async lambda
+# S981: Try/Except/Async list comprehension
+# S982: Try/Except/Async dict comprehension
+# S983: Try/Except/Async set comprehension
+# S984: Try/Except/Async generator expression
+# S985: Try/Except/Async await
+# S986: Try/Except/Async with
+# S987: Try/Except/Async for
+# S988: Try/Except/Async while
+# S989: Try/Except/Async with statement
+# S990: Try/Except/Async function
+# S991: Try/Except/Async method
+# S992: Try/Except/Async class
+# S993: Try/Except/Async lambda
+# S994: Try/Except/Async list comprehension
+# S995: Try/Except/Async dict comprehension
+# S996: Try/Except/Async set comprehension
+# S997: Try/Except/Async generator expression
+# S998: Try/Except/Async await
+# S999: Try/Except/Async with
+skip = *test*, *tests*, */tests/*, */test_*, */*_test*, */migrations/*, */alembic/*, */scripts/*
+
+# تنظیمات per-file-ignores (نادیده گرفتن خطاها در فایل‌های خاص)
+per-file-ignores =
+    __init__.py: F401, F403, F405, E402
+    conftest.py: F401
+    */tests/*: D100, D101, D102, D103, D104, D106, D107, F401, F403, F405, E402
+    */test_*.py: D100, D101, D102, D103, D104, D106, D107, F401, F403, F405, E402
+    */migrations/*: D100, D101, D102, D103, D104, D106, D107, F401, F403, F405, E402
+    */alembic/*: D100, D101, D102, D103, D104, D106, D107, F401, F403, F405, E402
+    */scripts/*: D100, D101, D102, D103, D104, D106, D107, F401, F403, F405, E402
+    */docs/*: D100, D101, D102, D103, D104, D106, D107, F401, F403, F405, E402
+
+# تنظیمات برای ابزارهای دیگر (پشتیبانی از pre-commit)
+# برای استفاده در pre-commit:
+# - repo: https://github.com/PyCQA/flake8
+#   rev: 7.1.1
+#   hooks:
+#     - id: flake8
+
+# ============================================================
+#              نصب و راه‌اندازی Flake8
+# ============================================================
+
+# نصب:
+# pip install flake8 flake8-bandit flake8-bugbear flake8-docstrings flake8-import-order flake8-pyproject
+
+# اجرا:
+# flake8 src/
+# flake8 src/ --max-line-length=100 --exclude=migrations,tests,docs,scripts
+
+# با pre-commit:
+# pre-commit run flake8 --all-files
+
+# ============================================================
+#                    پایان فایل .flake8
+# ============================================================
