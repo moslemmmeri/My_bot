@@ -1,0 +1,262 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my_bot_project"
+version = "1.0.0"
+description = "Telegram bot with Clean Architecture and DDD"
+readme = "README.md"
+authors = [
+    {name = "Your Name", email = "your.email@example.com"},
+]
+license = {text = "MIT"}
+requires-python = ">=3.9"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Framework :: AsyncIO",
+    "Topic :: Communications :: Chat",
+]
+
+dependencies = [
+    # Core
+    "aiogram==3.15.0",
+    "aiohttp==3.11.12",
+    "pydantic==2.10.6",
+    "pydantic-settings==2.7.0",
+    "python-dotenv==1.0.1",
+    
+    # Database
+    "sqlalchemy==2.0.38",
+    "alembic==1.14.1",
+    "asyncpg==0.30.0",
+    "aiosqlite==0.20.0",
+    "psycopg2-binary==2.9.10",
+    
+    # Cache
+    "redis==5.2.1",
+    
+    # External Services
+    "aiohttp==3.11.12",
+    "httpx==0.28.1",
+    
+    # Excel/Data
+    "openpyxl==3.1.5",
+    "pandas==2.2.3",
+    
+    # Charts
+    "matplotlib==3.10.1",
+    
+    # System
+    "psutil==7.0.0",
+    
+    # Utils
+    "python-dateutil==2.9.0.post0",
+    "pytz==2025.1",
+    
+    # Testing
+    "pytest==8.3.4",
+    "pytest-asyncio==0.25.3",
+    "pytest-cov==6.0.0",
+    "pytest-mock==3.14.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black==24.10.0",
+    "isort==5.13.2",
+    "mypy==1.14.1",
+    "flake8==7.1.1",
+    "pylint==3.3.4",
+    "pre-commit==4.1.0",
+]
+docs = [
+    "sphinx==8.1.3",
+    "sphinx-rtd-theme==3.0.2",
+]
+prod = [
+    "gunicorn==23.0.0",
+    "uvicorn==0.34.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/my_bot_project"
+Repository = "https://github.com/yourusername/my_bot_project"
+Issues = "https://github.com/yourusername/my_bot_project/issues"
+Documentation = "https://my_bot_project.readthedocs.io"
+
+[project.scripts]
+my_bot = "src.my_bot.bootstrap.app:main"
+admin_creator = "src.scripts.create_admin:main"
+db_migrate = "src.scripts.db_migrate:run_migration"
+backup_db = "src.scripts.backup_db:main"
+seed_data = "src.scripts.seed_data:main"
+
+[tool.black]
+line-length = 100
+target-version = ["py39", "py310", "py311", "py312"]
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | migrations
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+known_first_party = ["src"]
+known_third_party = ["aiogram", "aiohttp", "pydantic", "sqlalchemy", "alembic", "redis", "matplotlib"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_any_generics = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+ignore_missing_imports = false
+follow_imports = "normal"
+exclude = [
+    "migrations/",
+    "tests/",
+    "docs/",
+    "scripts/",
+]
+
+[[tool.mypy.overrides]]
+module = [
+    "aiogram.*",
+    "aiohttp.*",
+    "pydantic.*",
+    "sqlalchemy.*",
+    "alembic.*",
+    "redis.*",
+    "matplotlib.*",
+    "openpyxl.*",
+    "pandas.*",
+    "psutil.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --cov=src --cov-report=term --cov-report=html --cov-report=xml"
+testpaths = [
+    "src/tests",
+]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/migrations/*",
+    "*/scripts/*",
+    "*/docs/*",
+    "*/__pycache__/*",
+    "*/venv/*",
+    "*/site-packages/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+precision = 2
+show_missing = true
+skip_covered = true
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "1.0.0"
+tag_format = "v$version"
+update_changelog_on_bump = true
+
+[tool.bumpversion]
+current_version = "1.0.0"
+commit = true
+tag = true
+parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)(\\.(?P<release>[a-z]+)(?P<dev>\\d+))?"
+serialize = [
+    "{major}.{minor}.{patch}.{release}{dev}",
+    "{major}.{minor}.{patch}",
+]
+search = "{current_version}"
+replace = "{new_version}"
+regex = true
+ignore_missing_version = false
+tag_name = "v{new_version}"
+tag_message = "Bump version: {current_version} → {new_version}"
+commit_message = "Bump version: {current_version} → {new_version}"
+
+[tool.bumpversion.parts]
+release = {values = ["alpha", "beta", "rc"]}
+
+[tool.pylint.MESSAGES CONTROL]
+disable = [
+    "C0114",  # missing-module-docstring
+    "C0115",  # missing-class-docstring
+    "C0116",  # missing-function-docstring
+    "R0903",  # too-few-public-methods
+    "R0913",  # too-many-arguments
+    "R0914",  # too-many-locals
+    "W1203",  # logging-fstring-interpolation
+]
+
+[tool.pylint.master]
+ignore = ["migrations", "tests", "docs", "scripts"]
+fail-under = 8.0
+
+[tool.pylint.similarities]
+min-similarity-lines = 5
+ignore-comments = true
+ignore-docstrings = true
+ignore-imports = true
